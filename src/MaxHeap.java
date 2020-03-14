@@ -12,20 +12,27 @@ public class MaxHeap implements Heap {
     // build a heap based on data
     // to be implemented in O(nlogn)
     public void MaxHeapLogN(Integer[] input) {
+        size = input.length;
+        if(size == 0){
+            return;
+        }
         Arrays.sort(input);
         for(int i = 0; i < input.length; i++){
             data[input.length-1-i] = input[i];
         }
-        size = input.length;
+        
     }
 
     // build a heap based on data
     // to be implemented in O(n)
     public void MaxHeapN(Integer[] input) {
+        size = input.length;
+        if(size == 0){
+            return;
+        }
         for(int i = 0; i < input.length; i++){
             data[i] = input[i];
         }
-        size = input.length;
         int bottom = parent(size);
         for(int i = bottom; i >= 0; i--){
             swapChain(i);
@@ -49,7 +56,9 @@ public class MaxHeap implements Heap {
 
     // remove the root item
     public Integer pop() {
-        
+        if(size == 0){
+            return -1;
+        }
         int max = data[0];
         data[0] = data[size-1];
         size--;
@@ -104,5 +113,6 @@ public class MaxHeap implements Heap {
         for(int i = 0; i < size; i++){
             System.out.print(data[i]);
         }
+        System.out.println();
     }
 }
